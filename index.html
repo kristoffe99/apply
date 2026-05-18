@@ -1,319 +1,226 @@
 <html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Beans - Apply</title>
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-  <title>Hot Beans</title>
+  body{
+    background:#0b0b0b;
+    color:white;
+    min-height:100vh;
+  }
 
-  <style>
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:15px 5%;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    gap:15px;
+  }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+  .logo{
+    font-size:20px;
+    font-weight:bold;
+    color:#f4b36b;
+  }
 
-    body{
-      background:#0d0d0d; 
-      color:white;
-      min-height:100vh;
-    }
+  nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+  }
 
-    header{
-      width:100%;
-      padding:20px 5%;
+  nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+  }
 
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      flex-wrap:wrap;
+  nav ul li a:hover{
+    color:#f4b36b;
+  }
 
-      border-bottom:1px solid rgba(255,255,255,0.2);
-    }
+  .search-bar{
+    display:flex;
+    gap:0;
+  }
 
-    .logo-section{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
+  .search-bar input{
+    padding:8px 12px;
+    border-radius:6px 0 0 6px;
+    border:1px solid #333;
+    background:#111;
+    color:white;
+    font-size:1rem;
+    outline:none;
+  }
 
-    .logo{
-      width:50px;
-      height:50px;
+  .search-bar button{
+    padding:8px 16px;
+    border:none;
+    border-radius:0 6px 6px 0;
+    background:#f4b36b;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+  }
 
-      border:1px solid white;
+  .search-bar button:hover{
+    background:#ffa500;
+  }
 
-      display:flex;
-      justify-content:center;
-      align-items:center;
+  .main-container{
+    padding:40px 5%;
+    display:flex;
+    justify-content:center;
+  }
 
-      text-align:center;
-      font-size:12px;
-      line-height:1.2;
-    }
+  .apply-box{
+    background:#111;
+    border-radius:8px;
+    padding:30px;
+    max-width:600px;
+    width:100%;
+    border:2px solid #333;
+  }
 
-    .title{
-      color:#f4b36b;
-      font-size:2rem;
-      font-weight:500;
-    }
+  .apply-box h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#f4b36b;
+  }
 
-    .search-btn{
-      width:100%;
-      max-width:180px;
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
 
-      padding:12px 20px;
+  label{
+    font-weight:bold;
+    margin-bottom:5px;
+  }
 
-      background:transparent;
-      border:2px solid white;
-      border-radius:6px;
+  input{
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #333;
+    background:#0b0b0b;
+    color:white;
+    font-size:1rem;
+    width:100%;
+  }
 
-      color:white;
-      font-size:1rem;
+  .address-group{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
 
-      cursor:pointer;
-      transition:0.3s;
-    }
+  .address-group input{
+    flex:1;
+  }
 
-    .search-btn:hover{
-      background:white;
-      color:black;
-    }
+  button.submit-btn{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#f4b36b;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+  }
 
-    nav{
-      width:100%;
-      padding:15px 5%;
+  button.submit-btn:hover{
+    background:#ffa500;
+  }
 
-      border-bottom:1px solid rgba(255,255,255,0.2);
-    }
-
-    nav ul{
-      display:flex;
-      flex-wrap:wrap;
-      gap:30px;
-
-      list-style:none;
-    }
-
-    nav a{
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      transition:0.3s;
-    }
-
-    nav a:hover{
-      color:#f4b36b;
-    }
-
-    .main-container{
-      width:100%;
-      padding:40px 5%;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .job-section{
-      width:100%;
-      max-width:750px;
-
-      min-height:500px;
-
-      border:1px solid rgba(255,255,255,0.2);
-
-      padding:25px;
-
-      background:#111;
-
-      display:flex;
+  @media(max-width:480px){
+    .address-group{
       flex-direction:column;
-      justify-content:flex-start;
-      gap:40px;
     }
-
-    .editable-title{
+    nav ul{
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+    }
+    .search-bar{
       width:100%;
-
-      background:transparent;
-      border:none;
-      outline:none;
-
-      color:white;
-
-      font-size:1.7rem;
-      font-weight:bold;
+      margin-top:10px;
     }
-
-    .editable-title::placeholder{
-      color:rgba(255,255,255,0.4);
+    .search-bar input{
+      flex:1;
     }
+  }
 
-    .inner-box{
-      width:100%;
-      max-width:550px;
-
-      min-height:250px;
-
-      margin:0 auto;
-
-      border:1px solid white;
-
-      background:#0d0d0d;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      padding:20px;
-    }
-
-    .editable-content{
-      width:100%;
-      min-height:180px;
-
-      background:transparent;
-      border:none;
-      outline:none;
-      resize:none;
-
-      color:white;
-
-      font-size:1rem;
-      line-height:1.5;
-
-      text-align:center;
-    }
-
-    .editable-content::placeholder{
-      color:rgba(255,255,255,0.4);
-    }
-
-    @media (max-width:768px){
-
-      header{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .title{
-        font-size:1.7rem;
-      }
-
-      nav ul{
-        gap:20px;
-      }
-
-      .job-section{
-        min-height:auto;
-        padding:20px;
-      }
-
-      .editable-title{
-        font-size:1.4rem;
-      }
-
-      .inner-box{
-        min-height:220px;
-      }
-
-    }
-
-    @media (max-width:600px){
-
-      .search-btn{
-        max-width:100%;
-      }
-
-    }
-
-    @media (max-width:480px){
-
-      .title{
-        font-size:1.4rem;
-      }
-
-      nav ul{
-        flex-direction:column;
-        gap:15px;
-      }
-
-      .editable-title{
-        font-size:1.2rem;
-      }
-
-      .inner-box{
-        min-height:200px;
-        padding:15px;
-      }
-
-      .editable-content{
-        font-size:0.95rem;
-      }
-
-    }
-
-  </style>
-
+</style>
 </head>
-
 <body>
 
   <header>
+    <div class="logo">Hot Beans</div>
 
-    <div class="logo-section">
+    <nav>
+      <ul>
+        <li><a href="https://kristoffe99.github.io/home/">Home</a></li>
+        <li><a href="https://kristoffe99.github.io/meet-the-team/">Meet the team</a></li>
+        <li><a href="https://kristoffe99.github.io/profession/">Profession</a></li>
+        <li><a href="https://kristoffe99.github.io/apply/">Apply</a></li>
+        <li><a href="https://kristoffe99.github.io/courses/">Courses</a></li>
+      </ul>
+    </nav>
 
-      <div class="logo">
-        Blog<br>Logo
-      </div>
-
-      <h1 class="title">Hot Beans</h1>
-
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+      <button>Search</button>
     </div>
-
-    <button class="search-btn">
-      Search
-    </button>
-
   </header>
 
-  <nav>
-
-    <ul>
-      <li><a href="https://kristoffe99.github.io/home/">Home</a></li>
-      <li><a href="https://kristoffe99.github.io/meet-the-team/">Meet the team</a></li>
-      <li><a href="https://kristoffe99.github.io/profession/">Profession</a></li>
-      <li><a href="https://kristoffe99.github.io/apply/">Apply</a></li>
-      <li><a href="https://kristoffe99.github.io/courses/">Courses</a></li>
-    </ul>
-
-  </nav>
-
   <main class="main-container">
+    <div class="apply-box">
+      <h2>Application Form</h2>
+      <form>
+        <div>
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full-name" placeholder="John Doe" required>
+        </div>
 
-    <section class="job-section">
+        <div>
+          <label for="birth-date">Birth Date</label>
+          <input type="date" id="birth-date" name="birth-date" required>
+        </div>
 
-      <div class="inner-box">
+        <div class="address-group">
+          <div>
+            <label for="street">Street</label>
+            <input type="text" id="street" name="street" placeholder="123 Main St" required>
+          </div>
+          <div>
+            <label for="town">Town</label>
+            <input type="text" id="town" name="town" placeholder="Town Name" required>
+          </div>
+          <div>
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="City Name" required>
+          </div>
+        </div>
 
-        <textarea
-          class="editable-content"
-          placeholder="Enter job titles, qualifications, and descriptions here..."
-        ></textarea>
-
-      </div>
-	  
-	  <div class="submit-container">
-  <button type="submit" class="submit-btn">
-    Submit Application
-  </button>
-</div>
-
-    </section>
-
+        <button type="submit" class="submit-btn">Submit Application</button>
+      </form>
+    </div>
   </main>
 
 </body>
